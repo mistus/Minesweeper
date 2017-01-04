@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Mydoc/Sence/00_Start.unity
+  isLoaded: 1
+  isActive: 1
