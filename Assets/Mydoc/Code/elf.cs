@@ -8,6 +8,7 @@ public class elf : MonoBehaviour {
 	string type;
 	GameObject Camera;
 	MeshRenderer renderer;
+	Vector3 direction;
 
 	// Use this for initialization
 	void Start () {
@@ -26,9 +27,7 @@ public class elf : MonoBehaviour {
 	}
 
 	void move(){
-	
-		Vector3 direction;
-
+		
 		//沒按下左鍵時角色不移動
 		if (Input.GetMouseButton (0)) {
 			direction = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
