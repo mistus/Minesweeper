@@ -5,19 +5,18 @@ public class AllCube : MonoBehaviour {
 
 	public int noCheckCube = 0;
 	public int landmines = 5;
-	Cube Cubes;
 	string Path;
 	int normalCubeNoDisplay = 0;
+	Cube Cubes;
+
 	// Use this for initialization
 	void Start () {
-
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		updateCubeStatus ();
-
 	}
 
 	//更新方塊狀態(更新文字用)
@@ -50,14 +49,14 @@ public class AllCube : MonoBehaviour {
 		}
 
 		if (normalCubeNoDisplay == 0) {
-			UnityChanMove unitychaN = (UnityChanMove)GameObject.Find ("/Player/unitychan").GetComponent<UnityChanMove>();
+			UnityChanMove unitychan = (UnityChanMove)GameObject.Find ("/Player/unitychan").GetComponent<UnityChanMove>();
 
-			if (unitychaN.StageClear) {
+			if (unitychan.StageClear) {
 				return;
 			}
 
 			//普通方塊歸零 >勝利
-			unitychaN.GameClear();
+			unitychan.GameClear();
 
 		}
 
