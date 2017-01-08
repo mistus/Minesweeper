@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class DisMsg : MonoBehaviour {
-	const float screenwidth = 1136;
 
+	public GUIStyle msgWnd;
+	const float screenwidth = 1136;
 	const float msgwWidth = 100;
 	const float msgwHeigh = 100;
 	const float msgwPosX = (screenwidth - msgwWidth) / 2;
@@ -17,18 +18,16 @@ public class DisMsg : MonoBehaviour {
 	AllCube AllCube;
 
 	void Start () {
+		 AllCube = (AllCube)GameObject.Find ("/Cubes/").GetComponent<AllCube> ();
 		 msgwW = msgwWidth * factorSize;
 		 msgwH = msgwHeigh * factorSize;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		AllCube = (AllCube)GameObject.Find ("/Cubes/").GetComponent<AllCube> ();
+		
 	}
-
-	public GUIStyle msgWnd;
-
-
+		
 	void OnGUI(){
 		
 		//fontSet
@@ -51,6 +50,6 @@ public class DisMsg : MonoBehaviour {
 
 		myStyle.fontSize =  25 ;
 		GUI.Label(new Rect(msgwX, msgwY, msgwW, msgwH) ,Massage ,myStyle);
-
+		//GUI.Box (new Rect (10,10,100,90), "Loader Menu");
 	}
 }
