@@ -50,6 +50,7 @@ public class AllCube : MonoBehaviour {
 
 		if (normalCubeNoDisplay == 0) {
 			UnityChanMove unitychan = (UnityChanMove)GameObject.Find ("/Player/unitychan").GetComponent<UnityChanMove>();
+			Ranking ranking = (Ranking)GameObject.Find ("/Player/unitychan").GetComponent<Ranking>();
 
 			if (unitychan.StageClear) {
 				return;
@@ -57,7 +58,9 @@ public class AllCube : MonoBehaviour {
 
 			//普通方塊歸零 >勝利
 			unitychan.GameClear();
-
+			ranking.setRanking ((int)Time.time);
+			ranking.rankingSort ();	
+			ranking.enabled = true;
 		}
 
 	}
