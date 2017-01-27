@@ -1,22 +1,21 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Cube : MonoBehaviour {
 
 	public bool display ;
 	public bool Landmines;
+	//Cube隣の地雷の数↓
 	public int number;
 	public bool playerCheck;
-	public string playerCheckType;
-
 
 	Material material;
 	MeshRenderer renderer;
 	Material[] mats;
 
-	// Use this for initialization
 	void Start () {
-		
+
 		renderer = GetComponent<MeshRenderer> ();
 		display = false;
 		Landmines = false;
@@ -25,15 +24,15 @@ public class Cube : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		
-		//確認結果有無顯示
+
+		//表示されないと戻す
 		if(!checkDisplay()){
 			return;
 		}
 
-		//確認有無地雷
+		//該当Cubeに地雷あるかどうか
 		if (checkLandmine ()) {
-			//方塊改為紅色，顯示炸彈 遊戲結束
+			//赤に変更し、Gameover
 			//renderer.material.color = Color.red;
 			material = Resources.Load("Material/Boom", typeof(Material)) as Material;
 			renderer.material = material;
@@ -42,7 +41,7 @@ public class Cube : MonoBehaviour {
 		}
 
 
-		//確認數字
+		//周りの地雷数に応じて数字を変化する
 		switch(number){
 		case 0:
 			material = Resources.Load("Material/Zero", typeof(Material)) as Material;
@@ -70,10 +69,10 @@ public class Cube : MonoBehaviour {
 			break;
 
 		}
-			
+
 	}
 
-	//確認結果有無顯示
+	//表示されたかどうかを確認するメソッド
 	bool checkDisplay(){
 		if (this.display == true) {
 			return true;
@@ -82,9 +81,9 @@ public class Cube : MonoBehaviour {
 		}
 	} 
 
-	//確認玩家有無標記
+	//プレイヤーが赤チェックを付けたどうかを確認するメソッド
 	bool checkPlayerCheck(){
-		
+
 		if (this.playerCheck == true) {
 			return true;
 		} else {
@@ -92,7 +91,7 @@ public class Cube : MonoBehaviour {
 		}
 	} 
 
-	//確認有無地雷
+	//このCubeに地雷あるかのメソッド
 	bool checkLandmine(){
 		if (this.Landmines == true) {
 			return true;
@@ -101,7 +100,7 @@ public class Cube : MonoBehaviour {
 		}
 	} 
 
-	//確認有無地雷
+	//このCube隣の地雷数をReturnする
 	int checkNumber(){
 		return this.number;
 	} 
@@ -132,4 +131,3 @@ public class Cube : MonoBehaviour {
 
 
 }
-

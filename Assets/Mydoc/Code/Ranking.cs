@@ -15,12 +15,10 @@ public class Ranking : MonoBehaviour {
 	int playerSeconds;
 	bool textRedFlag;
 
-	// Use this for initialization
 	void Start () {
 		enabled = false;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	}
 
@@ -33,9 +31,6 @@ public class Ranking : MonoBehaviour {
 		msgwHeigh = (Screen.height / 10) * 7;
 
 		GUI.Box (new Rect (msgwX , msgwY, msgwWidth, msgwHeigh),"");
-		//GUI.Box (new Rect (10,10,100,90), "Loader Menu");
-		//GUI.Box (new Rect (Screen.width - 100,0,100,50), "Top-right");
-
 
 		float rankingTextX = msgwX + (msgwWidth / 10);
 		float rankingTextY;
@@ -59,8 +54,8 @@ public class Ranking : MonoBehaviour {
 
 	}
 
-	//排序
-	public void rankingSort(){
+	//ソートする
+	public void RankingSort(){
 
 		int tmp = 0;
 	
@@ -81,7 +76,7 @@ public class Ranking : MonoBehaviour {
 		}
 			
 
-		//Save更新
+		//記録を更新する
 		string save = "";
 		for (int i = 0; i < 10; i++) {
 
@@ -90,8 +85,8 @@ public class Ranking : MonoBehaviour {
 		PlayerPrefs.SetString("ranking",save.Substring(0,save.Length-1));
 	}
 
-
-	public void setRanking(int playerSecond){
+	//Rankingを取得する、初めてなら初期値
+	public void GetRanking(int playerSecond){
 
 		if (!PlayerPrefs.HasKey ("ranking")) {
 			PlayerPrefs.SetString("ranking","200,300,350,400,500,600,900,800,700,999");
